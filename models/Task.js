@@ -1,27 +1,27 @@
 const mongoose = require('mongoose');
-const Schema   = mongoose.Schema;
+const Schema = mongoose.Schema;
 
 const TaskSchema = new Schema ({
-        title: 
-        {
-           type: String,
-           required: true
-        },
-        description: 
-        {
-            Date: String,
-            required: true
-        },
-        reminder:
-        {
-            type: Date,
-            required: true
-        },
-        timeStamp:
-        {
-            type:Date,
-            default:Date.now()
-        },
+    title: 
+    {
+    type: String,
+    required:true
+    },
+    description: 
+    {
+     type: String,
+     required:true
+    },
+    reminder:
+    {
+    type: Date,
+    required:true
+    },
+    timeStamp:
+    {
+    type:Date,
+    default:Date.now()
+    }
         
 });
 
