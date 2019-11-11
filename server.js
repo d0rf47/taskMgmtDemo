@@ -3,12 +3,15 @@ const app = express();
 const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
 const mongoose = require('mongoose')
-const dbURL = 'mongodb+srv://Admin2:xuZNKjL2aHsqrlpv@falconbnb-ppoyi.gcp.mongodb.net/test?retryWrites=true&w=majority';
+const methodOverride =  require('method-override');
 const taskRouter =  require('./routes/Task')
 const userRouter =  require('./routes/User')
 const mainRouter =  require('./routes/General')
+const Keys = require('./config/Keys');
+app.use(bodyParser.urlencoded({extended:false}));  // Always must be listed above all routes
 
-app.use(bodyParser.urlencoded({extended:false}))
+app.use(methodOverride('_method'));
+
 app.use(bodyParser.json());
 app.use(express.static('public'));
 app.engine('handlebars', exphbs());
@@ -17,7 +20,7 @@ app.use('/', mainRouter);
 app.use("/user", userRouter);
 app.use('/task', taskRouter);
 
-mongoose.connect(dbURL,{ useUnifiedTopology: true, useNewUrlParser: true })
+mongoose.connect(Keys.getdbURL(),{ useUnifiedTopology: true, useNewUrlParser: true })
     .then(()=>{
      console.log('Database Connected');
  })
