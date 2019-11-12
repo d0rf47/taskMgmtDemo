@@ -19,7 +19,7 @@ router.post("/register", (req,res)=>
 //redirects to Login
 router.get("/login", (req,res)=>
 {
-    res.render('User/login');
+    res.render('Users/login');
 });
 //Route to process login form
 router.post("/login", (res,req)=>
@@ -28,7 +28,7 @@ router.post("/login", (res,req)=>
 });
 
 
-//User Dash
+//User Dashz
 router.get("/profile", (req,res)=>
 {
     res.send('Users/dashboard');

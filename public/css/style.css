@@ -45,6 +45,10 @@ form[id="deleteButtonForm"]
     display:inline-block
 }
 
+body
+{
+    background-color: black;
+}
 input[class="delButtons"]
 {
     background-color: white;
@@ -60,4 +64,10 @@ input[class="delButtons"]
     border-bottom: 1px dashed #000;
     padding-bottom:1.5rem;
     margin-bottom:1.5rem;
+}
+
+.container 
+{
+    background:black;
+    border: 1px solid black;
 }

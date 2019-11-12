@@ -15,7 +15,7 @@ router.post("/add", (req,res)=>{
     const newTask = 
     {
         title : req.body.title,
-        desc : req.body.description,
+        description : req.body.description,
         reminderDate : req.body.reminderDate
     }
 
@@ -37,7 +37,7 @@ router.get("/list", (req,res)=>
         Task.find()
         .then((tasks)=>
         {
-            res.render('Task/dashboard',
+            res.render('Task/TaskDash',
             {
                 lists:tasks
             });
