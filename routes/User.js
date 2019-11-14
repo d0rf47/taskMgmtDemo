@@ -73,20 +73,12 @@ router.post("/login", (req,res)=>
                                 //create a session with user credentials 
                                     //--> allows for static variables containing user data to render on pages
                                 req.session.userInfo = user;
-                                res.render('User/dashboard',
-                                {
-                                    first:user.firstName,
-                                    last:user.lastName
-                                });
-                                
+                                res.redirect("/user/profile");                                
                             }
                             else
                             {
                                 errors.push("Passwords dont match");
-                                res.render("User/login",
-                                {
-                                    errors:errors
-                                })
+                                res.redirect("/user/profile")
                             }
                     })
                     .catch(err => console.log(`Error ${err}`));
@@ -98,8 +90,8 @@ router.post("/login", (req,res)=>
 
 //User Dash
 router.get("/profile", (req,res)=>
-{
-    res.render('User/dashboard');
+{    
+    res.render('User/dashboard')
 });
 
 //Route to process user edit requests
@@ -111,7 +103,7 @@ router.get("/profile", (req,res)=>
 router.get('/logout', (req,res)=>
 {
     req.session.destroy();
-    res.redirect('/user.login');
+    res.redirect('/user/login');
 });
 
 module.exports = router;

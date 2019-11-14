@@ -25,16 +25,17 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 app.use(fileup());
 
-//set engine for handlebars rendering
-app.use('/', mainRouter);
-app.use("/user", userRouter);
-app.use('/task', taskRouter);
-
 app.use((req,res, next)=>
 {
     res.locals.user = req.session.userInfo;
     next();
 })
+//set engine for handlebars rendering
+app.use('/', mainRouter);
+app.use("/user", userRouter);
+app.use('/task', taskRouter);
+
+
 
 
 //connect to MongoDB
