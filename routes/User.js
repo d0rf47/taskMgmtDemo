@@ -28,7 +28,7 @@ router.post("/login", (res,req)=>
 });
 
 
-//User Dashz
+//User Dash
 router.get("/profile", (req,res)=>
 {
     res.send('Users/dashboard');
@@ -38,6 +38,12 @@ router.get("/profile", (req,res)=>
 router.put("/profile", (res,req)=>
 {
     res.send("Profile Updated");
+});
+
+router.get('/logout', (req,res)=>
+{
+    req.session.destroy();
+    res.redirect('/user.login');
 });
 
 module.exports = router;
