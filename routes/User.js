@@ -44,13 +44,13 @@ router.get("/login", (req,res)=>
     res.render('User/login');
 });
 //Route to process login form
-router.post("/login", (res,req)=>
+router.post("/login", (req,res)=>
 {
     const errors = [];
     const formData = 
     {
-        email   :   req.body.email,
-        password:   req.body.password    
+        email:req.body.email,
+        password: req.body.password    
     }
     User.findOne({email:formData.email})
         .then(user=>
@@ -73,7 +73,12 @@ router.post("/login", (res,req)=>
                                 //create a session with user credentials 
                                     //--> allows for static variables containing user data to render on pages
                                 req.session.userInfo = user;
-                                res.redirect("/User/profile")
+                                res.render('User/dashboard',
+                                {
+                                    first:user.firstName,
+                                    last:user.lastName
+                                });
+                                
                             }
                             else
                             {
@@ -94,14 +99,14 @@ router.post("/login", (res,req)=>
 //User Dash
 router.get("/profile", (req,res)=>
 {
-    res.send('Users/dashboard');
+    res.render('User/dashboard');
 });
 
 //Route to process user edit requests
-router.put("/profile", (res,req)=>
-{
-    res.send("Profile Updated");
-});
+// router.put("/profile", (res,req)=>
+// {
+//     res.send("Profile Updated");
+// });
 
 router.get('/logout', (req,res)=>
 {
