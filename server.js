@@ -32,7 +32,7 @@ app.use('/task', taskRouter);
 
 app.use((req,res, next)=>
 {
-    res.locals.user = req.sessopms.userInfo;
+    res.locals.user = req.session.userInfo;
     next();
 })
 
